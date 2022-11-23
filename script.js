@@ -98,6 +98,42 @@ function generatePassword(params) {
     return;
   }
 
+  var isLowercase = confirm(
+    "Would you like your pw to contain lowercase characters?"
+  );
+  var isUppercase = confirm(
+    "Would you like your pw to contain uppercase characters?"
+  );
+  var isSpecialChar = confirm(
+    "Would you like your pw to contain special characters?"
+  );
+  var isNumber = confirm("Would you like your pw to contain numbers?");
+
+  if (!isLowercase && !isUppercase && !isSpecialChar && !isNumber) {
+    alert("You shall not pass without any characters!!!");
+    return;
+  }
+
+  var finalCharsArray = [];
+
+  if (isLowercase) {
+    finalCharsArray.push(...lowercase);
+  }
+
+  if (isUppercase) {
+    finalCharsArray.push(...uppercase);
+  }
+
+  if (isSpecialChar) {
+    finalCharsArray.push(...symbols);
+  }
+
+  if (isNumber) {
+    finalCharsArray.push(...numbers);
+  }
+
+  console.log(finalCharsArray);
+
   // do the logic here
 }
 
