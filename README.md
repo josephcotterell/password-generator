@@ -1,6 +1,7 @@
 # Password Generator
 
 -Name: Joseph Cotterell
+
 -Email: josephcotterell@hotmail.co.uk
 
 # Description
