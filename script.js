@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+//list of characters
 const lowercase = [
   "a",
   "b",
@@ -84,8 +85,9 @@ const symbols = [
   ".",
 ];
 const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
+// generate password function
 function generatePassword(params) {
+  var password = "";
   // user input coming in as string
   var userPasswordLength = prompt(
     "Please choose a password between 8 and 128 characters"
@@ -94,26 +96,27 @@ function generatePassword(params) {
   var pwLength = parseInt(userPasswordLength, 10);
 
   if (!pwLength || pwLength < 8 || pwLength > 128) {
-    alert("Please choose a pw");
+    alert("Please choose a password");
     return;
   }
-
+  //list of prompts
   var isLowercase = confirm(
-    "Would you like your pw to contain lowercase characters?"
+    "Would you like your password to contain lowercase characters?"
   );
   var isUppercase = confirm(
-    "Would you like your pw to contain uppercase characters?"
+    "Would you like your password to contain uppercase characters?"
   );
   var isSpecialChar = confirm(
-    "Would you like your pw to contain special characters?"
+    "Would you like your password to contain special characters?"
   );
-  var isNumber = confirm("Would you like your pw to contain numbers?");
+  var isNumber = confirm("Would you like your password to contain numbers?");
 
   if (!isLowercase && !isUppercase && !isSpecialChar && !isNumber) {
-    alert("You shall not pass without any characters!!!");
+    alert("You must choose characters to create your password");
     return;
   }
 
+  //arrays for the prompts
   var finalCharsArray = [];
 
   if (isLowercase) {
@@ -132,9 +135,11 @@ function generatePassword(params) {
     finalCharsArray.push(...numbers);
   }
 
-  console.log(finalCharsArray);
-
-  // do the logic here
+  for (let index = 0; index < pwLength; index++) {
+    password +=
+      finalCharsArray[Math.floor(Math.random() * finalCharsArray.length)];
+  }
+  return password;
 }
 
 // Write password to the #password input
